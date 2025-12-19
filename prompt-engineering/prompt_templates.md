@@ -1,6 +1,8 @@
 # Reusable Prompt Templates
 
-This file contains reusable templates for various use cases. These templates are designed to be flexible and customizable, making them suitable for a wide range of tasks and scenarios.
+Copy/paste templates for common tasks. Customize placeholders (e.g., `[Concept]`, `[Audience]`).
+
+**Last updated:** 2025-12-19
 
 ---
 
@@ -59,7 +61,7 @@ Summarize the following text in [Word Count] words, emphasizing [Key Points/Them
 
 ### Story Generation
 ```
-Write a short story about [Topic], featuring [Specific Character/Setting/Plot Twist]. The story should be [Genre, e.g., Sci-Fi/Romantic/Thriller].
+Write a short story about [Topic], featuring [Specific Character/Setting/Plot Twist]. The story should be [Genre].
 ```
 
 ### Poetry
@@ -117,10 +119,11 @@ Generate [Number] innovative ideas for a [Type of Product/Service] targeting [Au
 
 ### Problem Solving
 ```
-Suggest solutions for [Problem], considering [Constraints/Resources]. Rank the solutions based on [Criteria, e.g., Cost/Feasibility/Efficiency].
+Suggest solutions for [Problem], considering [Constraints/Resources]. Rank the solutions based on [Criteria].
 ```
 
 ---
 
-These templates are designed to be a starting point. Customize the placeholders (e.g., [Concept], [Target Audience]) to match your specific requirements!
-
+**References:**
+- OpenAI Docs: https://platform.openai.com/docs
+- Prompting Guide: https://www.promptingguide.ai/
