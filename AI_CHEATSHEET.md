@@ -1,182 +1,304 @@
-# AI Coding Cheat Sheet (Professional Edition)
+# AI Coding Cheat Sheet — 2026 Edition
 
-A concise, practical guide for using AI in software engineering — from prompt design to verification, security, and documentation.
+A compact field guide for AI-assisted and agentic software engineering.
 
-**Last updated:** 2025-12-19
+**Updated:** 2026-09-10
+
+## The golden loop
+
+```text
+UNDERSTAND → PLAN → IMPLEMENT → VERIFY → REVIEW → MEASURE → LEARN
+```
+
+### 1. UNDERSTAND
+
+Before editing, inspect:
+
+- repository structure;
+- relevant code and tests;
+- architecture/conventions;
+- dependency versions;
+- error logs or failing behavior;
+- constraints and acceptance criteria.
+
+### 2. PLAN
+
+Ask for a short plan containing:
+
+```text
+Goal
+Files likely affected
+Risks / assumptions
+Implementation steps
+Verification commands
+```
+
+Plans should be easy to revise. Do not turn planning into an essay.
+
+### 3. IMPLEMENT
+
+Prefer:
+
+- the smallest coherent diff;
+- existing abstractions over unnecessary new ones;
+- no unrelated cleanup;
+- no silent dependencies;
+- iterative edit → test loops.
+
+### 4. VERIFY
+
+Use executable evidence whenever possible:
+
+```text
+[ ] format
+[ ] lint
+[ ] type check
+[ ] unit tests
+[ ] integration / E2E tests
+[ ] security checks
+[ ] dependency scan
+[ ] runtime verification
+[ ] performance benchmark when relevant
+```
+
+### 5. REVIEW
+
+Inspect the actual diff. Check:
+
+- omitted requirements;
+- accidental behavior changes;
+- overengineering;
+- insecure defaults;
+- new dependencies;
+- missing error paths;
+- weak AI-generated tests;
+- hidden compatibility breaks.
+
+### 6. MEASURE
+
+Do not use generated lines of code as the main success metric. Prefer:
+
+- accepted task completion;
+- review time;
+- escaped defects;
+- rework;
+- rollback rate;
+- cost per useful change;
+- latency;
+- developer time saved.
+
+### 7. LEARN
+
+If the agent repeatedly makes the same mistake, improve:
+
+- repo instructions;
+- tests;
+- examples;
+- fixtures;
+- tool configuration;
+- permissions;
+- evaluation tasks.
+
+Do not endlessly lengthen prompts.
 
 ---
 
-## 1) Golden Rules (Read First)
+## Universal task packet
 
-1. **Verify everything.** Treat AI output as a draft, not truth. Validate with tests, logs, and official docs.
-2. **Be explicit.** Clear scope, constraints, and success criteria improve output quality.
-3. **Protect sensitive data.** Never paste secrets or proprietary data into tools that don’t allow it.
-4. **Use AI to accelerate, not replace, engineering judgment.**
-5. **Cite sources in documentation and decisions.** When it matters, link the official source.
+```text
+GOAL
+Describe the behavior that should change.
 
-**References:**
-- OpenAI API documentation: https://platform.openai.com/docs
-- OWASP Top 10 for LLM Applications: https://owasp.org/www-project-top-10-for-large-language-model-applications/
-- NIST AI Risk Management Framework: https://www.nist.gov/itl/ai-risk-management-framework
+CONTEXT
+Point to relevant architecture, files, examples and conventions.
 
----
+CONSTRAINTS
+Compatibility, APIs, performance, dependencies, security.
 
-## 2) Quick Workflow (End-to-End)
+ACCEPTANCE CRITERIA
+Observable outcomes defining done.
 
-1. **Define the task** (inputs, outputs, constraints).
-2. **Ask for a plan** (list steps and assumptions).
-3. **Generate a draft** (code or text).
-4. **Review for correctness** (edge cases, security, performance).
-5. **Verify with tests** (unit, integration, linting).
-6. **Document changes** (include citations for external facts).
+VERIFICATION
+Exact commands/tests that must pass.
 
----
-
-## 3) Prompt Patterns That Work
-
-### A) Code Generation (Reliable Output)
-```
-You are a senior software engineer. 
-Task: Implement [feature] in [language/framework].
-Constraints: [time/space complexity, dependencies, conventions].
-Inputs: [data shapes, types, edge cases].
-Outputs: [function signature, return format].
-Also provide: tests + reasoning + any assumptions.
-```
-
-### B) Debugging
-```
-You are a debugger. 
-Given the error and code, identify the root cause and propose fixes.
-Include: failing line(s), explanation, and a patch suggestion.
-Error:
-[stack trace]
-Code:
-[snippet]
-```
-
-### C) Code Review
-```
-Review the following code for: correctness, security, performance, style.
-Return a list with severity (low/medium/high) and concrete fixes.
-```
-
-### D) Documentation
-```
-Summarize this feature for README.md in ~150 words.
-Include: purpose, usage, examples, and limitations.
-```
-
----
-
-## 4) Verification Checklist (Before You Ship)
-
-- ✅ Tests added or updated
-- ✅ Edge cases considered
-- ✅ Security risks reviewed (injection, auth, data exposure)
-- ✅ Performance impact reviewed
-- ✅ Citations for external facts and claims
-
-**References:**
-- OWASP Top 10 for LLM Applications: https://owasp.org/www-project-top-10-for-large-language-model-applications/
-- GitHub Secure Development guides: https://docs.github.com/en/code-security
-
----
-
-## 5) Security & Privacy Guardrails
-
-- **Never paste secrets** (API keys, tokens, passwords) into AI prompts.
-- **Redact or obfuscate** sensitive data before sharing.
-- **Prefer local or enterprise tools** for confidential codebases.
-
-**References:**
-- OpenAI data usage policy: https://openai.com/policies
-- GitHub Copilot trust & safety: https://docs.github.com/en/copilot
-
----
-
-## 6) When AI Is Best (and When It Isn’t)
-
-✅ **Great For:**
-- Scaffolding boilerplate
-- Explaining unfamiliar code
-- Drafting tests
-- Identifying potential edge cases
-- Summarizing docs
-
-⚠️ **Use Caution:**
-- Security-critical code
-- Financial / legal logic
-- Complex concurrency
-- Licensing-sensitive code
-
----
-
-## 7) Evaluation: How to Measure Quality
-
-| Dimension | What to Check | Example Signal |
-|----------|---------------|----------------|
-| Accuracy | Correct output? | Tests pass | 
-| Coverage | Handles edge cases? | Explicit tests | 
-| Security | No unsafe patterns? | Lint/SAST flags | 
-| Maintainability | Readable, well-structured? | Clear naming | 
-| Performance | Meets constraints? | Benchmarks | 
-
----
-
-## 8) High-Quality Sources to Cite
-
-- OpenAI Docs: https://platform.openai.com/docs
-- GitHub Copilot Docs: https://docs.github.com/en/copilot
-- Anthropic Claude Docs: https://docs.anthropic.com/
-- Google Gemini Docs: https://ai.google.dev/
-- NIST AI RMF: https://www.nist.gov/itl/ai-risk-management-framework
-- OWASP LLM Top 10: https://owasp.org/www-project-top-10-for-large-language-model-applications/
-- ACM Digital Library (research): https://dl.acm.org/
-- arXiv (research preprints): https://arxiv.org/
-
----
-
-## 9) One-Minute Prompt Upgrade
-
-**Before:**
-```
-Fix this bug.
-```
-
-**After:**
-```
-Act as a senior debugger.
-Given the stack trace, explain the root cause and propose a minimal patch.
-List the exact file + line changes.
-Add tests to prevent regression.
+BOUNDARIES
+What must not change? Which actions require approval?
 ```
 
 ---
 
-## 10) Quick Templates (Copy/Paste)
+## Prompt patterns
 
-### Unit Test Generation
-```
-Write unit tests for [function/class].
-Include edge cases and failure paths.
-Use [test framework].
+### Repository task
+
+```text
+Inspect the relevant files before editing.
+Restate the acceptance criteria and uncertainties.
+Propose a short implementation plan.
+Implement the smallest coherent patch.
+Run the relevant tests, type checks and linting.
+Report exact verification evidence and remaining risks.
+Do not modify unrelated files or add dependencies without justification.
 ```
 
-### Refactor for Readability
-```
-Refactor this code to improve readability.
-Preserve behavior and add comments for non-obvious logic.
+### Debugging
+
+```text
+Reproduce or trace the failure before proposing a fix.
+Identify the root cause, not only the symptom.
+Make the smallest correction.
+Add a regression test that fails before the fix and passes after it.
 ```
 
-### Summarize a File
+### Code review
+
+```text
+Review this diff for:
+1. correctness
+2. security
+3. missing edge cases
+4. compatibility
+5. maintainability
+6. unnecessary complexity
+7. test quality
+
+Rank findings by severity and cite exact files/lines.
 ```
-Summarize this file in 5 bullet points.
-Highlight risks and TODOs.
+
+### Refactor
+
+```text
+Preserve externally observable behavior.
+Explain the invariant being preserved.
+Keep the patch narrow.
+Run existing tests before and after the change.
+Do not mix feature work into the refactor.
 ```
 
 ---
 
-## 11) Reminder for Responsible Use
+## Context engineering
 
-AI can be a powerful accelerator, but production-quality results come from **verification**, **testing**, and **engineering judgment**.
+Give the system what it needs, not everything you have.
+
+Useful context:
+
+- architecture summary;
+- relevant source files;
+- interfaces/schemas;
+- tests;
+- examples of preferred style;
+- current logs/errors;
+- dependency constraints;
+- product requirements.
+
+Avoid dumping an entire repository when a small working set is sufficient.
+
+---
+
+## Agent permission ladder
+
+```text
+LOWER BLAST RADIUS
+read files
+→ write branch files
+→ run local commands
+→ network/tool access
+→ cloud/database write
+→ production/destructive actions
+HIGHER BLAST RADIUS
+```
+
+Use least privilege. Add human approval as blast radius rises.
+
+---
+
+## Security quick check
+
+Never rely on “write secure code” as the only control.
+
+```text
+[ ] no secrets in prompt/context/logs
+[ ] untrusted retrieved content treated as untrusted
+[ ] auth/authz paths tested
+[ ] input validation checked
+[ ] injection risks reviewed
+[ ] dependency additions reviewed/scanned
+[ ] secret scan run
+[ ] static security analysis run where useful
+[ ] high-risk tool actions require approval
+```
+
+Research reminder: SecureAgentBench reported only 15.2% correct-and-secure solutions for its best evaluated agent/model combination on 105 realistic vulnerability-oriented tasks.
+
+Source: https://arxiv.org/abs/2509.22097
+
+---
+
+## Benchmark sanity check
+
+Before citing a coding-agent score, ask:
+
+```text
+Which dataset/version?
+Which agent scaffold?
+Which model?
+Which tool permissions?
+How many retries / what budget?
+What date?
+Does it test security?
+Does it resemble my tasks?
+```
+
+SWE-bench official project: https://www.swebench.com/
+
+---
+
+## Productivity sanity check
+
+Evidence remains context-dependent. METR's early-2025 randomized study of experienced OSS developers found a 19% slowdown in its studied setting, while its 2026 follow-up said newer data was too selection-biased to cleanly estimate current speedup and suggested current tools likely help more than the earlier generation.
+
+Sources:
+
+- https://metr.org/blog/2025-07-10-early-2025-ai-experienced-os-dev-study/
+- https://metr.org/blog/2026-02-24-uplift-update/
+
+---
+
+## When AI is usually a strong fit
+
+- codebase explanation;
+- scaffolding;
+- test generation followed by review;
+- repetitive migrations;
+- bounded refactors;
+- debugging with logs/tests;
+- documentation;
+- multi-file mechanical edits;
+- alternative implementation exploration.
+
+## Use extra caution when
+
+- requirements are ambiguous;
+- the change is security-critical;
+- the agent cannot run meaningful verification;
+- production/data operations are irreversible;
+- code is highly concurrent or timing-sensitive;
+- domain correctness requires specialist knowledge;
+- the system proposes large unrelated rewrites.
+
+---
+
+## Team rule of thumb
+
+> **The model proposes. The environment tests. The engineer decides.**
+
+More detailed guides:
+
+- [Start Here](START_HERE.md)
+- [Agentic Workflow](playbooks/agentic-workflow.md)
+- [Verification First](playbooks/verification-first.md)
+- [Agent Security](security/agent-safety.md)
+- [Benchmarks](benchmarks/README.md)
+- [Research Landscape](research/2026-landscape.md)
+- [Interactive Dashboard](dashboard/index.html)
