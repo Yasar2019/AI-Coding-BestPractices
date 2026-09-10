@@ -15,10 +15,22 @@ This repository teaches that loop from first principles and keeps claims linked 
 
 | Your level | Recommended path |
 |---|---|
-| 🌱 Beginner | [START_HERE.md](START_HERE.md) → [Learning Paths](learning-paths/README.md) → [Cheat Sheet](AI_CHEATSHEET.md) |
-| 🧑‍💻 Developer | [Agentic Workflow](playbooks/agentic-workflow.md) → [Verification First](playbooks/verification-first.md) |
+| 🌱 Beginner | [START_HERE.md](START_HERE.md) → [AI Coding Academy](academy/README.md) → [Cheat Sheet](AI_CHEATSHEET.md) |
+| 🧑‍💻 Developer | [Agentic Workflow](playbooks/agentic-workflow.md) → [Verification First](playbooks/verification-first.md) → [Academy Labs](academy/README.md) |
 | 🧠 Advanced / Staff+ | [Research Landscape](research/2026-landscape.md) → [Benchmarks](benchmarks/README.md) → [Agent Security](security/agent-safety.md) |
-| 🏢 Team / Enterprise | [Team Operating Model](playbooks/team-operating-model.md) → [Agent Security](security/agent-safety.md) |
+| 🏢 Team / Enterprise | [Team Operating Model](playbooks/team-operating-model.md) → [Agent Security](security/agent-safety.md) → [Academy](academy/README.md) |
+
+## AI Coding Academy
+
+The new [`academy/`](academy/README.md) converts the handbook into a practice-first curriculum. Learners move through **Learn → Predict → Try → Verify → Reflect**, with hands-on labs and browser-local progress tracking.
+
+Phase 1 includes:
+
+- a structured beginner-to-expert curriculum map;
+- [Lab 01: Context Engineering](academy/labs/lab-01-context-engineering.md);
+- an [interactive Academy page](academy/index.html);
+- a knowledge check and local progress tracker;
+- CI checks that protect required learning files and internal Markdown links.
 
 ## Interactive AI Coding Dashboard
 
@@ -56,6 +68,7 @@ This aligns with current vendor guidance and with the broader research trend tow
 ```text
 AI_CHEATSHEET.md                Quick reference
 START_HERE.md                   Beginner-friendly orientation
+academy/                        Practice-first curriculum, labs and quizzes
 ai-tools/                       Tool guidance
 prompt-engineering/             Prompting and context patterns
 coding-best-practices/          Software engineering fundamentals
@@ -67,6 +80,7 @@ research/                       2026 landscape + primary references
 case_studies/                   Evidence-backed examples
 resources/                      Curated learning material
 dashboard/                      Interactive static dashboard
+.github/workflows/              Content-quality automation
 ```
 
 ## What changed in the 2026 edition
@@ -77,7 +91,7 @@ dashboard/                      Interactive static dashboard
 - Benchmark literacy: SWE-bench, broader software-engineering benchmarks, dialogue evaluation and end-to-end project evaluation.
 - Research summaries on real developer productivity, agentic coding usage, secure coding and research-extension benchmarks.
 - Practical guidance for choosing when to use AI—and when manual engineering is faster or safer.
-- An interactive dashboard for different experience levels.
+- Interactive dashboards and a practice-first Academy for different experience levels.
 
 ## Evidence snapshot
 
