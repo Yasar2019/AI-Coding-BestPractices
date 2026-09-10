@@ -19,7 +19,19 @@ jobs:
           test -f academy/README.md
           test -f academy/index.html
           test -f academy/labs/lab-01-context-engineering.md
+          test -f academy/labs/lab-02-verification-engineering.md
+          test -f academy/labs/lab-03-agentic-debugging.md
+          test -f academy/exercises/order_total/order_total.py
+          test -f academy/exercises/order_total/test_order_total.py
+          test -f academy/exercises/retry_helper/retry_helper.py
+          test -f academy/exercises/retry_helper/test_retry_helper.py
           test -f dashboard/index.html
+      - name: Validate Python exercise syntax
+        run: |
+          python -m py_compile academy/exercises/order_total/order_total.py
+          python -m py_compile academy/exercises/order_total/test_order_total.py
+          python -m py_compile academy/exercises/retry_helper/retry_helper.py
+          python -m py_compile academy/exercises/retry_helper/test_retry_helper.py
       - name: Validate internal Markdown links
         uses: gaurav-nelson/github-action-markdown-link-check@v1
         with:
