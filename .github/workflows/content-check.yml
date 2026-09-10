@@ -1,0 +1,28 @@
+name: Content checks
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check required Academy files
+        run: |
+          test -f README.md
+          test -f academy/README.md
+          test -f academy/index.html
+          test -f academy/labs/lab-01-context-engineering.md
+          test -f dashboard/index.html
+      - name: Validate internal Markdown links
+        uses: gaurav-nelson/github-action-markdown-link-check@v1
+        with:
+          use-quiet-mode: 'yes'
+          use-verbose-mode: 'no'
+          config-file: '.github/markdown-link-check.json'
