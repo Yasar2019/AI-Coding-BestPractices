@@ -13,9 +13,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Check required Academy files
+      - name: Check required public preview files
         run: |
           test -f README.md
+          test -f QUICKSTART.md
+          test -f ROADMAP.md
+          test -f RELEASE_NOTES.md
+          test -f CITATION.cff
           test -f academy/README.md
           test -f academy/index.html
           test -f academy/labs/lab-01-context-engineering.md
@@ -24,17 +28,31 @@ jobs:
           test -f academy/labs/lab-04-prompt-injection.md
           test -f academy/labs/lab-05-least-privilege.md
           test -f academy/labs/lab-06-secrets-supply-chain.md
+          test -f academy/labs/lab-07-evaluation-engineering.md
           test -f academy/exercises/order_total/order_total.py
           test -f academy/exercises/order_total/test_order_total.py
           test -f academy/exercises/retry_helper/retry_helper.py
           test -f academy/exercises/retry_helper/test_retry_helper.py
+          test -f evaluation/README.md
+          test -f evaluation/tasks.json
+          test -f evaluation/harness.py
+          test -f evaluation/test_harness.py
+          test -f evaluation/sample_results.jsonl
           test -f dashboard/index.html
-      - name: Validate Python exercise syntax
+      - name: Validate Python syntax
         run: |
           python -m py_compile academy/exercises/order_total/order_total.py
           python -m py_compile academy/exercises/order_total/test_order_total.py
           python -m py_compile academy/exercises/retry_helper/retry_helper.py
           python -m py_compile academy/exercises/retry_helper/test_retry_helper.py
+          python -m py_compile evaluation/harness.py
+          python -m py_compile evaluation/test_harness.py
+      - name: Test evaluation harness
+        run: |
+          python -m unittest evaluation/test_harness.py -v
+          python evaluation/harness.py evaluation/sample_results.jsonl
+      - name: Validate evaluation task JSON
+        run: python -m json.tool evaluation/tasks.json > /dev/null
       - name: Validate internal Markdown links
         uses: gaurav-nelson/github-action-markdown-link-check@v1
         with:

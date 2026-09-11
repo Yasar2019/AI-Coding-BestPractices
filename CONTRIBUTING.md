@@ -1,88 +1,150 @@
-# Contributing to AI-Powered Coding Best Practices
+# Contributing to AI Coding Best Practices
 
-Thank you for considering contributing to the **AI-Powered Coding Best Practices** repository! We welcome all contributions that align with our mission of helping developers harness the power of AI tools like ChatGPT and GitHub Copilot. Below are the guidelines to ensure a smooth collaboration process.
+Thank you for helping improve this project. Contributions are welcome from beginners, working engineers, researchers, educators, security practitioners, and engineering teams.
 
----
+The goal is not to collect as much AI content as possible. The goal is to build a **maintainable, evidence-backed, practical learning resource**.
 
-## 📝 How to Contribute
+## High-value contributions
 
-### 1. Reporting Issues
-- Use the [Issues](https://github.com/your-username/ai-powered-coding-best-practices/issues) tab to report bugs, suggest new features, or request clarifications.
-- Provide as much detail as possible:
-  - Steps to reproduce the issue (if applicable).
-  - Screenshots or code snippets to illustrate the problem.
-  - Suggestions for improvement.
+Especially useful contributions include:
 
-### 2. Submitting Code Contributions
-- Fork the repository and create a new branch:
-  ```bash
-  git checkout -b feature/your-feature-name
-  ```
-- Follow the folder structure and naming conventions in the repository.
-- Ensure your code is:
-  - Well-documented with comments and explanations.
-  - Tested for functionality.
-- Submit a pull request (PR) with a clear title and description:
-  - Explain the purpose of the PR.
-  - Highlight any potential impacts on existing features.
-  - Reference related issues, if applicable.
+- corrections to outdated or inaccurate claims;
+- stronger primary sources for existing claims;
+- reproducible Academy labs;
+- representative evaluation tasks;
+- real-world failure patterns with defensible evidence;
+- security and governance improvements;
+- accessibility and learning-design improvements;
+- fixes to interactive content, tests, CI, or documentation.
 
-### 3. Adding New Content
-- For new tutorials, examples, or case studies:
-  - Ensure the content is accurate and provides value to developers.
-  - Use simple and concise language.
-  - Include relevant metrics, diagrams, or screenshots where applicable.
-- For resources:
-  - Ensure the resources are reputable and up-to-date.
-  - Include a short description of the resource and its relevance.
+## Before opening a pull request
 
-### 4. Improving Documentation
-- Check for typos, formatting issues, or outdated information in the documentation.
-- Make improvements where necessary and submit a PR with your changes.
+1. Read [QUICKSTART.md](QUICKSTART.md) and [ROADMAP.md](ROADMAP.md).
+2. Search existing issues and pull requests for similar work.
+3. Keep the change focused enough to review independently.
+4. Run the relevant local checks.
 
----
+For major curriculum, architecture, or evaluation changes, opening an issue first is encouraged.
 
-## 📐 Coding Standards
+## Source and research policy
 
-### 1. General Guidelines
-- Write clean, readable, and maintainable code.
-- Use consistent naming conventions (e.g., camelCase for variables, PascalCase for classes).
-- Avoid hardcoding values; use configuration files or environment variables where possible.
+When adding a factual or time-sensitive claim:
 
-### 2. Linting and Formatting
-- Use the repository’s configured linters and formatting tools (e.g., `Prettier`, `ESLint`, `Black`, etc.).
-- Run linting checks before submitting your PR.
+1. Prefer the primary source.
+2. Include the publication date when relevant.
+3. State what population, benchmark, or task set the claim applies to.
+4. Include material limitations.
+5. Distinguish peer-reviewed work, preprints, vendor research, and practitioner reports.
+6. Do not turn one benchmark snapshot into a timeless model ranking.
+7. Do not cite a marketing claim as if it were independent evidence.
 
-### 3. Testing
-- Write unit tests for any new functionality.
-- Use descriptive test names and include edge cases.
-- Ensure all tests pass before submitting your PR.
+Preferred evidence order:
 
----
+1. peer-reviewed publication or strong research preprint;
+2. official benchmark/project documentation;
+3. primary vendor engineering/research documentation;
+4. standards and security organizations;
+5. reputable secondary reporting when primary evidence is unavailable.
 
-## 🛠 Tools and Workflow
+## Adding an Academy lab
 
-- Use [Git](https://git-scm.com/) for version control.
-- Regularly pull updates from the main branch to avoid conflicts.
-  ```bash
-  git pull origin main
-  ```
-- Write descriptive commit messages.
-  - Example: `Add prompt engineering examples for ChatGPT`.
+A strong lab should include:
 
----
+- target level and approximate scope;
+- a concrete scenario;
+- explicit learning objectives;
+- an activity that requires judgment, not only reading;
+- a verification or reflection step;
+- completion criteria;
+- source links when factual claims are involved.
 
-## 📜 License
-By contributing to this repository, you agree that your contributions will be licensed under the [MIT License](LICENSE).
+Runnable labs should include tests where practical. Intentionally failing starter code is welcome when the failure is part of the learning design.
 
----
+## Adding an evaluation task
 
-## 🗨️ Communication
+Evaluation tasks should be:
 
-- For major changes, please open an issue first to discuss what you would like to change.
-- Be respectful and inclusive in all communications. Follow the [Contributor Covenant Code of Conduct](CODE_OF_CONDUCT.md).
+- representative of a recognizable software-engineering activity;
+- versionable;
+- independently verifiable where possible;
+- explicit about expected behavior;
+- safe to execute in the intended environment.
 
----
+Do not submit benchmark results without enough metadata to interpret them. At minimum record model/version, agent/harness, repository/task version, permissions, retries, verification, and interaction policy.
 
-Thank you for helping us make this repository a valuable resource for developers worldwide! 🚀
+Synthetic or illustrative data **must** be labeled clearly and must never be presented as measured model performance.
 
+## Code contributions
+
+Create a focused branch:
+
+```bash
+git checkout -b feature/your-change
+```
+
+Keep code dependency-light unless a new dependency has a strong justification.
+
+For Python changes in the current public preview, use the standard library where practical and add tests for behavior changes.
+
+## Local checks
+
+For the evaluation harness:
+
+```bash
+python -m unittest evaluation/test_harness.py -v
+python evaluation/harness.py evaluation/sample_results.jsonl
+```
+
+For the Academy exercises:
+
+```bash
+cd academy/exercises/order_total
+python -m unittest -v
+
+cd ../retry_helper
+python -m unittest -v
+```
+
+Note: the two Academy starter implementations are intentionally defective for teaching purposes, so their exercise suites are expected to fail until a learner fixes them. CI validates their syntax rather than requiring the starter exercises to pass.
+
+## Pull request checklist
+
+Before submitting a PR, confirm:
+
+- [ ] The change has a clear purpose.
+- [ ] New claims have appropriate sources and limitations.
+- [ ] New links use the correct repository paths.
+- [ ] New code has relevant tests.
+- [ ] Synthetic/demo data is clearly labeled.
+- [ ] Security controls were not weakened to make a demo pass.
+- [ ] The change does not silently expand agent permissions or dependency scope.
+- [ ] Documentation explains how another contributor can verify the change.
+
+## Commit and PR quality
+
+Use descriptive commits and a PR description that explains:
+
+- what changed;
+- why it changed;
+- how it was verified;
+- any known limitations or follow-up work.
+
+## Security
+
+Do not include real secrets, credentials, private customer data, proprietary code, or sensitive logs in issues, labs, fixtures, examples, or pull requests.
+
+Security labs in this repository are defensive and simulation-based. Contributions should preserve that posture.
+
+## Code of Conduct
+
+Be respectful and constructive. See [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md).
+
+## License
+
+By contributing, you agree that your contributions are licensed under the repository's [MIT License](LICENSE).
+
+## Questions
+
+Open an issue in this repository if the contribution path is unclear:
+
+https://github.com/Yasar2019/AI-Coding-BestPractices/issues

@@ -1,0 +1,24 @@
+cff-version: 1.2.0
+message: "If you use this repository in teaching, research, or internal engineering guidance, please cite the repository."
+title: "AI Coding Best Practices"
+type: software
+version: "0.1.0-public-preview"
+date-released: 2026-09-11
+authors:
+  - family-names: "Nazzarian"
+    given-names: "Yasar"
+url: "https://github.com/Yasar2019/AI-Coding-BestPractices"
+repository-code: "https://github.com/Yasar2019/AI-Coding-BestPractices"
+license: MIT
+abstract: >-
+  An evidence-backed, beginner-to-expert handbook and interactive academy for
+  AI-assisted and agentic software engineering, covering context engineering,
+  verification, debugging, security, evaluation, benchmarks, and team workflows.
+keywords:
+  - ai coding
+  - coding agents
+  - software engineering
+  - evaluation
+  - agent safety
+  - prompt engineering
+  - context engineering
