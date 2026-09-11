@@ -21,6 +21,9 @@ jobs:
           test -f academy/labs/lab-01-context-engineering.md
           test -f academy/labs/lab-02-verification-engineering.md
           test -f academy/labs/lab-03-agentic-debugging.md
+          test -f academy/labs/lab-04-prompt-injection.md
+          test -f academy/labs/lab-05-least-privilege.md
+          test -f academy/labs/lab-06-secrets-supply-chain.md
           test -f academy/exercises/order_total/order_total.py
           test -f academy/exercises/order_total/test_order_total.py
           test -f academy/exercises/retry_helper/retry_helper.py
