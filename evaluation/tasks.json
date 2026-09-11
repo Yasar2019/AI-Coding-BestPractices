@@ -1,0 +1,38 @@
+{
+  "suite": "ai-coding-best-practices-public-preview",
+  "version": "0.1.0",
+  "tasks": [
+    {
+      "id": "order-total-boundaries",
+      "category": "bug-fixing",
+      "difficulty": "beginner",
+      "source": "academy/exercises/order_total",
+      "goal": "Repair specification-boundary and invalid-input behavior without weakening tests.",
+      "verification": "python -m unittest academy/exercises/order_total/test_order_total.py -v"
+    },
+    {
+      "id": "retry-helper-control-flow",
+      "category": "debugging",
+      "difficulty": "intermediate",
+      "source": "academy/exercises/retry_helper",
+      "goal": "Fix retry/control-flow behavior with a minimal causal patch and regression evidence.",
+      "verification": "python -m unittest academy/exercises/retry_helper/test_retry_helper.py -v"
+    },
+    {
+      "id": "agent-trust-boundary-review",
+      "category": "security-review",
+      "difficulty": "intermediate",
+      "source": "academy/labs/lab-04-prompt-injection.md",
+      "goal": "Identify untrusted instructions, preserve the user task, and propose bounded safe handling.",
+      "verification": "Human rubric: identifies trust boundary, rejects conflicting untrusted instruction, preserves task intent, proposes least-privilege handling."
+    },
+    {
+      "id": "agent-permission-design",
+      "category": "security-design",
+      "difficulty": "intermediate",
+      "source": "academy/labs/lab-05-least-privilege.md",
+      "goal": "Choose minimum sufficient permissions and approval gates for a coding-agent task.",
+      "verification": "Human rubric: minimum privileges, explicit high-risk approval, protected secrets/production, auditable actions."
+    }
+  ]
+}
