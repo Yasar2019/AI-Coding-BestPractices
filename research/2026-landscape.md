@@ -1,8 +1,8 @@
 # AI Coding Research Landscape — 2026
 
-This page tracks notable evidence about AI-assisted and agentic software engineering. It distinguishes **capability benchmarks**, **real-world developer studies**, **security evaluations**, and **usage research**.
+This page tracks notable evidence about AI-assisted and agentic software engineering. It distinguishes **capability benchmarks**, **real-world developer studies**, **security evaluations**, **usage research**, and **evaluation methodology**.
 
-> Last reviewed: 2026-09-10
+> Last reviewed: 2026-09-11
 
 ## 1. Real developer productivity is context-dependent
 
@@ -71,7 +71,35 @@ Primary sources:
 - https://openai.com/index/running-codex-safely/
 - https://www.anthropic.com/research/trustworthy-agents
 
-## 8. Research principles for this repository
+## 8. Benchmark quality itself can distort conclusions
+
+In July 2026, OpenAI published an audit of SWE-Bench Pro and estimated that roughly **30% of tasks were broken** under its audit criteria. The post argues that invalid or ambiguous tasks can materially distort capability estimates.
+
+Primary source: https://openai.com/index/separating-signal-from-noise-coding-evaluations/
+
+Important limitation: this is a vendor-conducted benchmark audit and should not be treated as independent consensus about every SWE-Bench variant.
+
+**Takeaway:** benchmark integrity is part of evaluation engineering. A precise score on a flawed task set can still be misleading.
+
+## 9. Broader software-engineering task coverage matters
+
+OmniCode (2026) introduced **1,794 tasks** across Python, Java and C++, covering bug fixing, test generation, code-review fixing and style fixing. Its authors report substantial variation by language and task category, with some agent configurations performing much worse outside Python bug fixing.
+
+Primary source: https://arxiv.org/abs/2602.02262
+
+**Takeaway:** patch generation alone is not a complete proxy for software engineering ability.
+
+## 10. “Bug fix” and “feature” labels can hide very different task demands
+
+A September 2026 preprint proposed a Spread–Novelty–Centrality profile for repository-level coding tasks and applied it across multiple benchmarks and thousands of agent trajectories. The authors found that nominal task labels were weak proxies for actual engineering demands and that agent behavior exposed differences not visible from labels alone.
+
+Primary source: https://arxiv.org/abs/2609.01271
+
+Important limitation: this is a recent preprint and should be treated as evolving evidence rather than settled methodology.
+
+**Takeaway:** internal evaluations should characterize task difficulty and structure, not merely assign broad labels.
+
+## 11. Research principles for this repository
 
 When adding a study:
 
@@ -82,6 +110,7 @@ When adding a study:
 5. Include limitations.
 6. Avoid turning benchmark snapshots into timeless rankings.
 7. Separate vendor usage studies from independent evaluations.
+8. Record when a claim is based on a recent preprint rather than peer-reviewed work.
 
 ## Research watchlist
 
@@ -96,7 +125,8 @@ Future updates should track:
 - cost-adjusted benchmark performance;
 - software engineering in scientific and safety-critical domains;
 - agent observability and governance;
-- evaluation contamination and benchmark saturation.
+- evaluation contamination and benchmark saturation;
+- benchmark task validity and task-demand profiling.
 
 ## Suggested citation format
 
